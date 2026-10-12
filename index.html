@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voice Unit Converter</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>🎙️ Voice Unit Converter</h1>
+      <p class="sub">Say a conversion out loud, or type it.</p>
+    </header>
+
+    <section class="card center">
+      <button id="micBtn" class="mic" aria-pressed="false">Start listening</button>
+      <p id="status" class="status" role="status">Ready</p>
+      <p id="transcript" class="transcript" aria-live="polite"></p>
+
+      <div class="options">
+        <label>Language
+          <select id="lang">
+            <option value="en-IN">English (India)</option>
+            <option value="en-US">English (US)</option>
+            <option value="en-GB">English (UK)</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" id="speakToggle" checked /> Read result aloud</label>
+      </div>
+
+      <div class="chips" id="chips">
+        <button type="button" class="chip">convert 5 kilometers to miles</button>
+        <button type="button" class="chip">how many feet in a mile</button>
+        <button type="button" class="chip">100 fahrenheit in celsius</button>
+        <button type="button" class="chip">two point five liters to milliliters</button>
+      </div>
+    </section>
+
+    <section id="resultCard" class="card result" hidden aria-live="polite">
+      <p id="resultMain" class="result-main"></p>
+      <p id="resultSub" class="result-sub"></p>
+    </section>
+
+    <section class="card">
+      <h2>Type it instead</h2>
+      <form id="textForm" class="row">
+        <input id="textInput" type="text" maxlength="200" placeholder="e.g. convert 10 kg to pounds" autocomplete="off" required />
+        <button type="submit">Convert</button>
+      </form>
+      <h3>Or pick units</h3>
+      <form id="manualForm" class="row wrap">
+        <input id="manualValue" type="number" step="any" value="1" required aria-label="Value" />
+        <select id="manualFrom" aria-label="From unit"></select>
+        <span class="arrow">→</span>
+        <select id="manualTo" aria-label="To unit"></select>
+        <button type="submit">Convert</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="row between">
+        <h2>History</h2>
+        <button id="clearBtn" class="ghost" type="button">Clear</button>
+      </div>
+      <ul id="history" class="history"></ul>
+      <p id="historyEmpty" class="muted">No conversions yet.</p>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
